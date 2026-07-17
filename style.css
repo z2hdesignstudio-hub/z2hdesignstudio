@@ -1,0 +1,159 @@
+/* --- Base Resets & Typography --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #050505; 
+    color: #ffffff;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    position: relative;
+}
+
+/* --- Ambient Background Animation --- */
+.background-animation {
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle at 50% 50%, rgba(20, 30, 48, 0.8) 0%, rgba(5, 5, 5, 1) 50%),
+                radial-gradient(circle at 80% 20%, rgba(0, 198, 255, 0.1) 0%, transparent 40%);
+    animation: rotateBg 30s linear infinite;
+    z-index: 0;
+}
+
+@keyframes rotateBg {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* --- Glassmorphism UI --- */
+.glass-container {
+    position: relative;
+    z-index: 1;
+    background: rgba(255, 255, 255, 0.03); 
+    backdrop-filter: blur(20px); 
+    -webkit-backdrop-filter: blur(20px); 
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 24px;
+    padding: 4rem;
+    max-width: 900px;
+    width: 90%;
+    text-align: center;
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* --- Logo Processing --- */
+.logo {
+    max-width: 220px;
+    height: auto;
+    filter: invert(1) drop-shadow(0 0 15px rgba(255, 255, 255, 0.1));
+    margin-bottom: 2rem;
+}
+
+/* --- Content Wrapper Alignment --- */
+.content {
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    width: 100%;
+}
+
+/* --- Typography --- */
+.content h1 {
+    /* Slightly reduced max-size so uppercase fits cleanly on one line */
+    font-size: clamp(1.5rem, 4vw, 3rem); 
+    line-height: 1.2;
+    font-weight: 700;
+    text-transform: uppercase; /* Enforces all caps */
+    background: linear-gradient(135deg, #ffffff 0%, #a1a1aa 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 1.5rem;
+    letter-spacing: -0.02em;
+}
+
+.subtitle {
+    font-size: 1rem; 
+    color: #8f8f97;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    font-weight: 500;
+    margin-bottom: 4rem;
+}
+
+/* --- Loading Bar UX (Centered) --- */
+.loading-wrapper {
+    width: 100%;
+    max-width: 500px;
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    margin: 0 auto; 
+    gap: 1.2rem;
+}
+
+.progress-bar-container {
+    width: 100%;
+    height: 6px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.5);
+}
+
+.progress-bar {
+    height: 100%;
+    width: 0%; 
+    background: linear-gradient(90deg, #00c6ff 0%, #0072ff 100%);
+    border-radius: 10px;
+    position: relative;
+    box-shadow: 0 0 15px rgba(0, 198, 255, 0.6);
+}
+
+.progress-bar::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 30px;
+    background: rgba(255, 255, 255, 0.8);
+    filter: blur(4px);
+}
+
+.loading-text {
+    font-size: 1.25rem;
+    font-weight: 500;
+    color: #e4e4e7;
+    font-variant-numeric: tabular-nums; 
+}
+
+/* --- Mobile Friendliness --- */
+@media (max-width: 768px) {
+    .glass-container {
+        padding: 3rem 1.5rem;
+        border-radius: 20px;
+    }
+    
+    .logo {
+        max-width: 160px;
+    }
+
+    .subtitle {
+        font-size: 0.75rem;
+        line-height: 1.8;
+    }
+}
